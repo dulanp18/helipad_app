@@ -4,5 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   # TODO: add validations later
+  has_many :listings , dependent: :destroy
 
 end
