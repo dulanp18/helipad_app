@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index :show
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @listings = Listing.all
@@ -15,7 +15,12 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.new(listing_params)
-    @listing.save
+    @listing.user = current_user
+    if @listing.save
+      redirect_to listing_path(@listing)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -36,6 +41,6 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:title, :description, :price, :user_id)
+    params.require(:title, :description, :price, :address)
   end
 end
