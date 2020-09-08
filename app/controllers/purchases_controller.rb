@@ -12,13 +12,19 @@ class PurchasesController < ApplicationController
   def new
     @listing = Listing.find(params[:listing_id])
     @purchase = Purchase.new
+    @purchase.listing = @listing
+    @purchase.user = current_user
   end
 
   def create
+    @listing = Listing.find(params[:listing_id])
     @purchase = Purchase.new(purchase_params)
     @purchase.user = current_user
+    start_time_string = params[:purchase][:start_time]
+    finish_time_string = params[:purchase][:finish_time]
+    raise
     if @purchase.save
-      redirect_to purchase_path
+      redirect_to listing_purchase_path(@purchase)
     else
       render :new
     end

@@ -1,7 +1,7 @@
-<%= @listing.title %>
 
-<%= simple_form_for @purchase do |f| %>
-<%= f.input :start_time %>
-<%= f.input :finish_time %>
+
+<%= simple_form_for [@listing, @purchase] do |f| %>
+<%= f.input :start_time, as: :date, html5: true %>
+<%= f.input :finish_time, as: :date, html5: true %>
 <%= f.button :submit %>
 <% end %>
