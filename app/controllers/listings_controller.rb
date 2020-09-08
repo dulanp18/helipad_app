@@ -29,7 +29,11 @@ class ListingsController < ApplicationController
 
   def update
     @listing = Listing.find(params[:id])
-    @listing = Listing.update(listing_params)
+    if @listing.update(listing_params)
+      redirect_to listing_path(@listing)
+    else
+      render :new
+    end
   end
 
   def destroy
