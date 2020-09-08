@@ -1,4 +1,8 @@
-<%= @listing.title =%>
-<%= @listing.description =%>
+<h1><%= @listing.title %></h1>
+<h2><%= @listing.description %></h2>
 
+<%= link_to 'Book Now', new_listing_purchase_path(@listing)%>
+
+<% if @listing.photo.attached?%>
 <%= cl_image_tag @listing.photo.key, height: 300, width: 400, crop: :fill =%>
+<% end %>

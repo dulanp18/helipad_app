@@ -1,14 +1,16 @@
 class PurchasesController < ApplicationController
+
   def index
     @user = current_user
     @purchases = Purchase.where(user_id: @user.id)
   end
 
   def show
-    @purchase = Purchase.find(params[:id])
+    @purchase = Purchase.find(params[:listing_id])
   end
 
   def new
+    @listing = Listing.find(params[:listing_id])
     @purchase = Purchase.new
   end
 
@@ -38,6 +40,10 @@ class PurchasesController < ApplicationController
   end
 
   private
+
+  def find_listing
+    params.id
+  end
 
   def purchase_params
     params.require(:purchase).permit(:start_time, :finish_time, :total_cost)
