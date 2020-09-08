@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   # TODO: add validations later
   has_many :listings , dependent: :destroy
+  has_many :purchases , dependent: :destroy
 
 end
