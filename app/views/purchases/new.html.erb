@@ -1,4 +1,7 @@
 <%= @listing.title %>
 
 <%= simple_form_for @purchase do |f| %>
-<%= f.input : %>
+<%= f.input :start_time %>
+<%= f.input :finish_time %>
+<%= f.button :submit %>
+<% end %>
