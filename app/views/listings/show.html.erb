@@ -1,4 +1,6 @@
 
+
+
 <h1> New Listing</h1>
 
 <%# Details %>
@@ -13,10 +15,13 @@
 
 
 
-<%# Buttons %>
+<% if @listing.photo.attached?%>
+  <%= cl_image_tag @listing.photo.key, height: 300, width: 400, crop: :fill =%>
+<% end %>
+
+<%= link_to 'Book Now', new_listing_purchase_path(@listing)%>
 <%= link_to "Edit", edit_listing_path(@listing)%>
 <%= link_to "Delete", listing_path(@listing), method: :delete, data: {:confirm => "Are you sure?"}%> <br>
 
 
-<%# Image %>
-<%= cl_image_tag @listing.photo.key, height: 300, width: 400, crop: :fill =%>
+
