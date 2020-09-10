@@ -6,7 +6,8 @@ class PurchasesController < ApplicationController
   end
 
   def show
-    @purchase = Purchase.find(params[:listing_id])
+    @listing = Listing.fing(params[:listing_id])
+    @purchase = Purchase.find(params[:id])
   end
 
   def new
@@ -19,12 +20,15 @@ class PurchasesController < ApplicationController
   def create
     @listing = Listing.find(params[:listing_id])
     @purchase = Purchase.new(purchase_params)
+    @purchase.listing = @listing
     @purchase.user = current_user
-    start_time_string = params[:purchase][:start_time]
-    finish_time_string = params[:purchase][:finish_time]
-    raise
+    start_time = DateTime.strptime(params[:purchase][:start_time], '%Y-%m-%d')
+    finish_time = DateTime.strptime(params[:purchase][:finish_time], '%Y-%m-%d')
+    date_diff = finish_time - start_time
+    # TODO: Add confirmation page to create
+    @purchase.total_cost = @listing.price * date_diff.to_i
     if @purchase.save
-      redirect_to listing_purchase_path(@purchase)
+      redirect_to listing_purchase_path(@listing, @purchase)
     else
       render :new
     end
@@ -52,6 +56,6 @@ class PurchasesController < ApplicationController
   end
 
   def purchase_params
-    params.require(:purchase).permit(:start_time, :finish_time, :total_cost)
+    params.require(:purchase).permit(:start_time, :finish_time)
   end
 end

@@ -1,1 +1,8 @@
 <%= @purchase.listing.title %>
+<%= @purchase.listing.description %>
+
+<%= @purchase.start_time %>
+<%= @purchase.finish_time %>
+<%= @purchase.total_cost %>
+
+<%= link to "Edit Booking", edit_listing_purchase_path(@listing, @purchase) %>
