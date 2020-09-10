@@ -3,5 +3,6 @@
 
 <h1><%= listing.title %></h1>
 <h2><%= listing.description %></h2>
+<%= cl_image_tag listing.photo.key, height: 300, width: 400, crop: :fill =%>
 <% end %>
 <% end %>
