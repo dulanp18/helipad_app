@@ -1,5 +1,5 @@
 <% @purchases.each do |purchase| %>
-    <%= link_to listing_purchases_path(purchase) do %>
+    <%= link_to listing_purchase_path(purchase.listing,purchase) do %>
         <p><%= purchase.listing.title %></p>
         <p><%= purchase.listing.description %></p>
 
