@@ -1,0 +1,11 @@
+<% @purchases.each do |purchase| %>
+    <%= link_to listing_purchases_path(purchase) do %>
+        <p><%= purchase.listing.title %></p>
+        <p><%= purchase.listing.description %></p>
+
+        <p><%= purchase.start_time %></p>
+        <p><%= purchase.finish_time %></p>
+        <p><%= purchase.total_cost %></p>
+    <% end %>
+<% end %>
+    
