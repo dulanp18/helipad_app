@@ -1,0 +1,7 @@
+<%= simple_form_for [@listing, @purchase] do |f| %>
+<%= f.input :start_time, as: :date, html5: true %>
+<%= f.input :finish_time, as: :date, html5: true %>
+<%= f.button :submit %>
+<% end %>
+
+<%= link_to 'Cancel this booking', listing_purchase_path(@listing, @purchase), method: :delete, data: {:confirm => "Are you sure?"} %>
