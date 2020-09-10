@@ -1,8 +1,10 @@
 <% @listings.each do |listing| %>
-<%= link_to listing_path(listing) do%>
+  <%= link_to listing_path(listing) do%>
 
-<h1><%= listing.title %></h1>
-<h2><%= listing.description %></h2>
-<%= cl_image_tag listing.photo.key, height: 300, width: 400, crop: :fill =%>
-<% end %>
+  <h1><%= listing.title %></h1>
+  <h2><%= listing.description %></h2>
+    <% if listing.photo.attached? %>
+    <%= cl_image_tag listing.photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  <% end %>
 <% end %>
