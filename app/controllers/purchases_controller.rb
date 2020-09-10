@@ -5,7 +5,7 @@ class PurchasesController < ApplicationController
   end
 
   def show
-    @listing = Listing.fing(params[:listing_id])
+    @listing = Listing.find(params[:listing_id])
     @purchase = Purchase.find(params[:id])
   end
 
@@ -34,18 +34,27 @@ class PurchasesController < ApplicationController
   end
 
   def edit
+    @listing = Listing.find(params[:listing_id])
     @purchase = Purchase.find(params[:id])
   end
 
   def update
     @purchase = Purchase.find(params[:id])
-    @purchase = Purchase.update(purchase_params)
+    @listing = Listing.find(params[:listing_id])
+    start_time = DateTime.strptime(params[:purchase][:start_time], '%Y-%m-%d')
+    finish_time = DateTime.strptime(params[:purchase][:finish_time], '%Y-%m-%d')
+    date_diff = finish_time - start_time
+    @purchase.total_cost = @listing.price * date_diff.to_i
+# raise
+    @purchase.save
+    redirect_to listing_purchase_path(@listing, @purchase)
   end
 
   def destroy
     @purchase = Purchase.find(params[:id])
+    @listing = Listing.find(params[:listing_id])
     @purchase.destroy
-    redirect_to purchase_path
+    redirect_to listing_purchases_path(@listing)
   end
 
   private
@@ -55,6 +64,6 @@ class PurchasesController < ApplicationController
   end
 
   def purchase_params
-    params.require(:purchase).permit(:start_time, :finish_time)
+    params.require(:purchase).permit(:start_time, :finish_time, :total_cost)
   end
 end
