@@ -6,7 +6,7 @@ class PurchasesController < ApplicationController
   end
 
   def show
-    @listing = Listing.fing(params[:listing_id])
+    @listing = Listing.find(params[:listing_id])
     @purchase = Purchase.find(params[:id])
   end
 
