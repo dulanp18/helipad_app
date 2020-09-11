@@ -2,7 +2,11 @@ class ListingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @listings = Listing.all
+    @listings = if params[:search]
+                  Listing.search(params[:search]).order('created_at DESC')
+                else
+                  Listing.all
+                end
   end
 
   def show

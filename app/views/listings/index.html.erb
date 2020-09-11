@@ -1,3 +1,8 @@
+  <div class="search">
+    <%= form_tag(listings_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Helicopters", class: 'form-control' %>
+    <% end %>
+  </div>
 <% @listings.each do |listing| %>
   <%= link_to listing_path(listing) do%>
 
