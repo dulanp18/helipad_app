@@ -1,0 +1,17 @@
+.list-group {
+  margin-top: 1em;
+
+  li {
+    margin-bottom: 1em;
+  }
+}
+
+.middle-container {
+  margin: 2em;
+  padding: 1em;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

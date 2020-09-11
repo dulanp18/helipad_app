@@ -1,11 +1,19 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
+  <%= link_to home_path, class: "navbar-brand" do %>
+    <%= image_tag "helicopter-solid.svg", class: "image" %>
+  <h1>&nbsp Helipad</h1>
+  <% end %>
+
+
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+    <div class="search">
+    <%= form_tag(listings_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Helicopters", class: 'form-control' %>
+    <% end %>
+  </div>
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
