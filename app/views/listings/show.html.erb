@@ -14,6 +14,7 @@
         <h3><%= "Description: " =%> <%= @listing.description %></h3>
         <h3><%= "Address: " =%><%= @listing.address %></h3>
         <h3><%= "Price: " =%>$<%= @listing.price %> per day</h3>
+        <p>Book this helicopter today. Go anywhere.<br> It comes with a pilot and fuel.<br> <strong>You meet at the address provided</strong></p>
       </div>
       <div class="buttons">
         <%= link_to 'Book Now', new_listing_purchase_path(@listing), class: "btn btn-primary"%>
