@@ -11,7 +11,11 @@
                 required: true,
                 input_html: { autocomplete: "last-name" } %>
     <%= f.input :date_of_birth,
-                required: true,
+                required: true, 
+                as: :date,
+                start_year: Time.now.year - 100,
+                end_year: Time.now.year - 18,
+                order: %i(year month day), 
                 input_html: { autocomplete: "date-of-birth" } %>
     <%= f.input :address,
                 required: true,
