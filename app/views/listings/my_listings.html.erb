@@ -1,5 +1,5 @@
 <div class="container">
-<h1 class="title">Your Listings</h1>
+<h1 class="title">My Helicopters</h1>
 
   <% if @listings.length == 0 %>
   <p>You have no helicopters yet.</p>
@@ -14,6 +14,7 @@
               <% end %>
               <div class="card-body">
                 <h5 class="card-title"><%= listing.title %></h5>
+                <h5>Number of Bookings: <%= listing.purchases.length %></h5>
                 <div class="card-text">
                   <p> <%= listing.description %></p>
                   <p> $<%= listing.price %></p>
@@ -23,6 +24,14 @@
             </div>
         <% end %>
     </div>
+    <h1 class="title">Bookings For My Helicopters</h1>
+    <ul class="list-group">
+      <% @listings.each do |listing| %>
+        <% listing.purchases.each do |purchase| %>
+          <%= link_to listing_purchase_path(purchase.listing,purchase) do %>
+            <li class="list-group-item"><strong>Name:</strong> <%= purchase.listing.title %> - <strong>Start time:</strong> <%= purchase.start_time.strftime('%d-%m-%Y') %> - <strong>Finish time:</strong> <%= purchase.finish_time.strftime('%d-%m-%Y') %> - <strong>Price:</strong> $<%= purchase.total_cost %> - <strong>Status:</strong> <%= purchase.status.titlecase %></li>
+        <% end %>
+    <% end %>
   <% end %>
-
+  <% end %>
 </div>
