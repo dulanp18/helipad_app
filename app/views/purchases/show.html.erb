@@ -12,6 +12,7 @@
         <h3>Finish date: <%= @purchase.finish_time.strftime('%d-%m-%Y') %></h3>
         <h3>Total cost: $<%= @purchase.total_cost %></h3>
         <h3>Status: <%= @purchase.status.titlecase %></h3>
+        <h3>Booked By: <%= @purchase.user.first_name %> <%= @purchase.user.last_name %></h3>
       </div>
     </div>
   <%= link_to "Edit Booking", edit_listing_purchase_path(@listing, @purchase), class: "btn btn-info" %>
