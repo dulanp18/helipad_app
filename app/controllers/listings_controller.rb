@@ -2,6 +2,7 @@ class ListingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    @user = current_user
     @listings = if params[:search]
                   Listing.search(params[:search]).order('created_at DESC')
                 else
@@ -45,7 +46,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing = Listing.find(params[:id])
     @listing.destroy
-    redirect_to listings_path
+    redirect_to my_listings_path
   end
 
   def my_listings
