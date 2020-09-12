@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 2020_09_12_014148) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status", default: "pending"
     t.bigint "review_id"
+    t.string "status", default: "pending"
     t.index ["listing_id"], name: "index_purchases_on_listing_id"
     t.index ["review_id"], name: "index_purchases_on_review_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"

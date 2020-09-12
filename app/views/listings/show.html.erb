@@ -1,5 +1,9 @@
 <div class="container">
-
+  <ul>
+    <% @listing.reviews.each do |review| %>
+      <li><%= review.content %></li>
+    <% end %>
+  </ul>
   <h1 class="title"><%= @listing.title %></h1>
 <%# Details %>
 
