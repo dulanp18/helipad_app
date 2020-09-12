@@ -2,6 +2,7 @@ class ListingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    @user = current_user
     @listings = if params[:search]
                   Listing.search(params[:search]).order('created_at DESC')
                 else

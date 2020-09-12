@@ -29,12 +29,17 @@
     </div>
     <div>
         <% if current_user == @listing.user %>
+        <h1 class="title"> <%= @listing.title %>'s Bookings</h1>
         <ul>
-          <% @purchases.each do |purchase| %>
-            <%= link_to listing_purchase_path(purchase.listing,purchase) do %>
-                <li class="list-group-item"><%= purchase.listing.title %> - Start time: <%= purchase.start_time %> - Finish time: <%= purchase.finish_time %> - $<%= purchase.total_cost %></li>
+          <% if @purchases.length == 0 %>
+            <p>You Have No Bookings Yet</p>
+          <% else %>
+            <% @purchases.each do |purchase| %>
+              <%= link_to listing_purchase_path(purchase.listing,purchase) do %>
+                  <li class="list-group-item"><%= purchase.listing.title %> - Start time: <%= purchase.start_time %> - Finish time: <%= purchase.finish_time %> - $<%= purchase.total_cost %></li>
+              <% end %>
             <% end %>
-        <% end %>
+          <% end %>
         </ul>
       <% end %>
     </div>
