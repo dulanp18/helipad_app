@@ -2,7 +2,7 @@
 <h1 class="title">Choose Your Helicopter</h1>
   <div class="grid">
     <% @listings.each do |listing| %>
-      <% if listing.user_id != @user.id %>
+      <%# if listing.user_id != @user.id %>
         <%= link_to listing_path(listing) do%>
           <div class="card" style="width: 18rem;">
             <% if listing.photo.attached? %>
@@ -18,7 +18,7 @@
         <% end %>
           </div>
       <% end %>
-    <% end %>
+    <%# end %>
   </div>
 
 </div>

@@ -5,14 +5,14 @@
   <div class="middle-container">
     <div class="text-container">
       <div class="writing">
-        <h3>Title: <%= @purchase.listing.title %></h3>
-        <h3>Description: <%= @purchase.listing.description %></h3>
-        <h3>Address: <%= @purchase.listing.address %></h3>
-        <h3>Start date: <%= @purchase.start_time.strftime('%d-%m-%Y') %></h3>
-        <h3>Finish date: <%= @purchase.finish_time.strftime('%d-%m-%Y') %></h3>
-        <h3>Total cost: $<%= @purchase.total_cost %></h3>
-        <h3>Status: <%= @purchase.status.titlecase %></h3>
-        <h3>Booked By: <%= @purchase.user.first_name %> <%= @purchase.user.last_name %></h3>
+        <h3><strong>Title:</strong> <%= @purchase.listing.title %></h3>
+        <h3><strong>Description:</strong> <%= @purchase.listing.description %></h3>
+        <h3><strong>Address:</strong> <%= @purchase.listing.address %></h3>
+        <h3><strong>Start date:</strong> <%= @purchase.start_time.strftime('%d-%m-%Y') %></h3>
+        <h3><strong>Finish date:</strong> <%= @purchase.finish_time.strftime('%d-%m-%Y') %></h3>
+        <h3><strong>Total cost:</strong> $<%= @purchase.total_cost %></h3>
+        <h3><strong>Status:</strong> <%= @purchase.status.titlecase %></h3>
+        <h3><strong>Booked By:</strong> <%= @purchase.user.first_name %> <%= @purchase.user.last_name %></h3>
       </div>
     </div>
   <% if @user == @purchase.user %>
