@@ -1,10 +1,9 @@
-<% @purchases.each do |purchase| %>
-    <%= link_to listing_purchase_path(purchase.listing,purchase) do %>
-        <p><%= purchase.listing.title %></p>
-        <p><%= purchase.listing.description %></p>
-
-        <p><%= purchase.start_time %></p>
-        <p><%= purchase.finish_time %></p>
-        <p><%= purchase.total_cost %></p>
-    <% end %>
-<% end %>
+<div class="container">
+  <ul class="list-group">
+    <% @purchases.each do |purchase| %>
+      <%= link_to listing_purchase_path(purchase.listing,purchase) do %>
+          <li class="list-group-item"><%= purchase.listing.title %> - Start time: <%= purchase.start_time %> - Finish time: <%= purchase.finish_time %> - $<%= purchase.total_cost %></li>
+      <% end %>
+  <% end %>
+  </ul>
+</div>

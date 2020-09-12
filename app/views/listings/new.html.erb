@@ -1,9 +1,12 @@
-<%= simple_form_for @listing do |f| %>
-<%= f.input :title %>
-<%= f.input :description %>
-<%= f.input :address %>
-<%= f.input :price %>
-<%= f.input :photo, as: :file %>
-<%= f.button :submit %>
-<% end %>
+<div class="container">
+  <h1 class="title">Rent out your helicopter</h1>
+  <%= simple_form_for @listing do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :address %>
+  <%= f.input :price %>
+  <%= f.input :photo, as: :file %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
+</div>
 

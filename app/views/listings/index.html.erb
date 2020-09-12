@@ -1,10 +1,23 @@
-<% @listings.each do |listing| %>
-  <%= link_to listing_path(listing) do%>
-
-  <h1><%= listing.title %></h1>
-  <h2><%= listing.description %></h2>
-    <% if listing.photo.attached? %>
-    <%= cl_image_tag listing.photo.key, height: 300, width: 400, crop: :fill %>
+<div class="container">
+<h1 class="title">Our range</h1>
+  <div class="grid">
+    <% @listings.each do |listing| %>
+      <%= link_to listing_path(listing) do%>
+        <div class="card" style="width: 18rem;">
+          <% if listing.photo.attached? %>
+            <%= cl_image_tag listing.photo.key, crop: :fill, class: "card-img-top" %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= listing.title %></h5>
+            <div class="card-text">
+              <p> <%= listing.description %></p>
+              <p> $<%= listing.price %></p>
+            </div>
+          </div>
+      <% end %>
+        </div>
     <% end %>
-  <% end %>
-<% end %>
+  </div>
+
+</div>
+

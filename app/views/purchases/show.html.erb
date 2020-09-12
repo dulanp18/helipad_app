@@ -1,8 +1,18 @@
-<%= @purchase.listing.title %>
-<%= @purchase.listing.description %>
+<div class="container">
 
-<%= @purchase.start_time %>
-<%= @purchase.finish_time %>
-<%= @purchase.total_cost %>
+  <h1 class="title">Your Booking</h1>
 
-<%= link_to "Edit Booking", edit_listing_purchase_path(@listing, @purchase) %>
+  <div class="middle-container">
+    <div class="text-container">
+      <div class="writing">
+        <h3>Title: <%= @purchase.listing.title %></h3>
+        <h3>Description: <%= @purchase.listing.description %></h3>
+        <h3>Address: <%= @purchase.listing.address %></h3>
+        <h3>Start date: <%= @purchase.start_time %></h3>
+        <h3>Finish date: <%= @purchase.finish_time %></h3>
+        <h3>Total cost: $<%= @purchase.total_cost %></h3>
+      </div>
+    </div>
+  <%= link_to "Edit Booking", edit_listing_purchase_path(@listing, @purchase), class: "btn btn-info" %>
+  </div>
+</div>

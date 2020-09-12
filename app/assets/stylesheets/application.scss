@@ -11,3 +11,23 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 2rem;
+  grid-gap: 2rem;
+}
+
+.body {
+  margin: 0;
+}
+
+
+a {
+    &:hover {
+      text-decoration: none;
+    }
+}
