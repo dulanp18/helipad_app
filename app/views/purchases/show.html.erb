@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h1 class="title">Your Booking</h1>
+  <h1 class="title">Booking Info</h1>
 
   <div class="middle-container">
     <div class="text-container">
@@ -20,8 +20,11 @@
     <%= link_to "Leave a review" %>
   <% else %>
     <% if @purchase.status == 'declined'  %>
-      <%= link_to "Accept Booking", listing_purchase_accept_path(@listing,@purchase), :method => :patch, class: "btn btn-success" %><br>
+      <%= link_to "Accept Booking", listing_purchase_accept_path(@listing,@purchase), :method => :patch, class: "btn btn-success" %>
     <% elsif @purchase.status == 'accepted'  %>
+      <%= link_to "Decline Booking", listing_purchase_decline_path(@listing,@purchase) , :method => :patch,  class: "btn btn-danger" %>
+    <% else  %>
+      <%= link_to "Accept Booking", listing_purchase_accept_path(@listing,@purchase), :method => :patch, class: "btn btn-success" %><br>
       <%= link_to "Decline Booking", listing_purchase_decline_path(@listing,@purchase) , :method => :patch,  class: "btn btn-danger" %>
     <% end %>
   <% end %>
