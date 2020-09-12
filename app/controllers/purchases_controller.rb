@@ -60,6 +60,26 @@ class PurchasesController < ApplicationController
     redirect_to purchases_path
   end
 
+  def accept
+    @purchase = Purchase.find(params[:purchase_id])
+    @listing = Listing.find(params[:listing_id])
+    @purchase.status = 'accepted'
+    @purchase.save
+
+    redirect_to listing_purchase_path(@listing, @purchase)
+  end
+
+  def decline
+    @purchase = Purchase.find(params[:purchase_id])
+    @listing = Listing.find(params[:listing_id])
+    @purchase.status = 'declined'
+    @purchase.save
+
+    redirect_to listing_purchase_path(@listing, @purchase)
+
+  end
+
+
   private
 
   def find_listing

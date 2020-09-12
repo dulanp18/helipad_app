@@ -18,8 +18,8 @@
   <% if @user == @purchase.user %>
     <%= link_to "Edit Booking", edit_listing_purchase_path(@listing, @purchase), class: "btn btn-info" %>
   <% else %>
-    <%= link_to "Accept Booking", "#", class: "btn btn-info" %>
-    <%= link_to "Decline Booking", "#" , class: "btn btn-info" %>
+    <%= link_to "Accept Booking", listing_purchase_accept_path(@listing,@purchase), :method => :patch, class: "btn btn-info" %>
+    <%= link_to "Decline Booking", listing_purchase_decline_path(@listing,@purchase) , :method => :patch, class: "btn btn-info" %>
   <% end %>
 
   </div>
