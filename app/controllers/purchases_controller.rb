@@ -67,6 +67,6 @@ class PurchasesController < ApplicationController
   end
 
   def purchase_params
-    params.require(:purchase).permit(:start_time, :finish_time)
+    params.require(:purchase).permit(:start_time, :finish_time, :status)
   end
 end
