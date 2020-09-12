@@ -46,6 +46,11 @@ class ListingsController < ApplicationController
     redirect_to listings_path
   end
 
+  def my_listings
+    @user = current_user
+    @listings = Listing.where(user_id: @user.id)
+  end
+
   private
 
   def listing_params
