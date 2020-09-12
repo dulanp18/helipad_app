@@ -8,8 +8,8 @@
         <h3>Title: <%= @purchase.listing.title %></h3>
         <h3>Description: <%= @purchase.listing.description %></h3>
         <h3>Address: <%= @purchase.listing.address %></h3>
-        <h3>Start date: <%= @purchase.start_time %></h3>
-        <h3>Finish date: <%= @purchase.finish_time %></h3>
+        <h3>Start date: <%= @purchase.start_time.strftime('%d-%m-%Y') %></h3>
+        <h3>Finish date: <%= @purchase.finish_time.strftime('%d-%m-%Y') %></h3>
         <h3>Total cost: $<%= @purchase.total_cost %></h3>
       </div>
     </div>
