@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :purchases, only: [ :new, :create, :show, :edit, :update, :destroy ]
   end
 
+  get 'my_listings', to: 'listings#my_listings', as: 'my_listings'
+
   resources :purchases, only: [ :index ]
 
 
