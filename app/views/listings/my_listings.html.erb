@@ -1,5 +1,5 @@
 <div class="container">
-<h1 class="title">Your Listings</h1>
+<h1 class="title">My Helicopters</h1>
 
   <% if @listings.length == 0 %>
   <p>You have no helicopters yet.</p>
@@ -23,6 +23,14 @@
             </div>
         <% end %>
     </div>
+    <h1 class="title">Bookings For My Helicopters</h1>
+    <ul class="list-group">
+      <% @listings.each do |listing| %>
+        <% listing.purchases.each do |purchase| %>
+          <%= link_to listing_purchase_path(purchase.listing,purchase) do %>
+            <li class="list-group-item"><%= purchase.listing.title %> - Start time: <%= purchase.start_time.strftime('%d-%m-%Y') %> - Finish time: <%= purchase.finish_time.strftime('%d-%m-%Y') %> - $<%= purchase.total_cost %> - <%= purchase.status.titlecase %></li>
+        <% end %>
+    <% end %>
   <% end %>
-
+  <% end %>
 </div>
