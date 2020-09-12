@@ -1,0 +1,28 @@
+<div class="container">
+<h1 class="title">Your Listings</h1>
+
+  <% if @listings.length == 0 %>
+  <p>You have no helicopters yet.</p>
+    <%= link_to "Add You First Helicopter", new_listing_path %>
+  <% else %>
+    <div class="grid">
+        <% @listings.each do |listing| %>
+          <%= link_to listing_path(listing) do%>
+            <div class="card" style="width: 18rem;">
+              <% if listing.photo.attached? %>
+                <%= cl_image_tag listing.photo.key, crop: :fill, class: "card-img-top" %>
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title"><%= listing.title %></h5>
+                <div class="card-text">
+                  <p> <%= listing.description %></p>
+                  <p> $<%= listing.price %></p>
+                </div>
+              </div>
+          <% end %>
+            </div>
+        <% end %>
+    </div>
+  <% end %>
+
+</div>

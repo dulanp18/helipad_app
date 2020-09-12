@@ -5,14 +5,22 @@
   <div class="middle-container">
     <div class="text-container">
       <div class="writing">
-        <h3>Title: <%= @purchase.listing.title %></h3>
-        <h3>Description: <%= @purchase.listing.description %></h3>
-        <h3>Address: <%= @purchase.listing.address %></h3>
-        <h3>Start date: <%= @purchase.start_time %></h3>
-        <h3>Finish date: <%= @purchase.finish_time %></h3>
-        <h3>Total cost: $<%= @purchase.total_cost %></h3>
+        <h3><strong>Booked By:</strong> <%= @purchase.user.first_name %> <%= @purchase.user.last_name %></h3>
+        <h3><strong>Title:</strong> <%= @purchase.listing.title %></h3>
+        <h3><strong>Description:</strong> <%= @purchase.listing.description %></h3>
+        <h3><strong>Address:</strong> <%= @purchase.listing.address %></h3>
+        <h3><strong>Start date:</strong> <%= @purchase.start_time.strftime('%d-%m-%Y') %></h3>
+        <h3><strong>Finish date:</strong> <%= @purchase.finish_time.strftime('%d-%m-%Y') %></h3>
+        <h3><strong>Total cost:</strong> $<%= @purchase.total_cost %></h3>
+        <h3><strong>Status:</strong> <%= @purchase.status.titlecase %></h3>
       </div>
     </div>
-  <%= link_to "Edit Booking", edit_listing_purchase_path(@listing, @purchase), class: "btn btn-info" %>
+  <% if @user == @purchase.user %>
+    <%= link_to "Edit Booking", edit_listing_purchase_path(@listing, @purchase), class: "btn btn-info" %>
+  <% else %>
+    <%= link_to "Accept Booking", listing_purchase_accept_path(@listing,@purchase), :method => :patch, class: "btn btn-success" %><br>
+    <%= link_to "Decline Booking", listing_purchase_decline_path(@listing,@purchase) , :method => :patch, class: "btn btn-danger" %>
+  <% end %>
+
   </div>
 </div>

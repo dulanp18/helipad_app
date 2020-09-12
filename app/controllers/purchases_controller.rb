@@ -8,6 +8,8 @@ class PurchasesController < ApplicationController
   def show
     @listing = Listing.find(params[:listing_id])
     @purchase = Purchase.find(params[:id])
+    @user = current_user
+    # @purchase.finish_time = DateTime.strptime(params[:purchase][:finish_time], '%Y-%m-%d')
   end
 
   def new
@@ -59,6 +61,26 @@ class PurchasesController < ApplicationController
     redirect_to purchases_path
   end
 
+  def accept
+    @purchase = Purchase.find(params[:purchase_id])
+    @listing = Listing.find(params[:listing_id])
+    @purchase.status = 'accepted'
+    @purchase.save
+
+    redirect_to listing_purchase_path(@listing, @purchase)
+  end
+
+  def decline
+    @purchase = Purchase.find(params[:purchase_id])
+    @listing = Listing.find(params[:listing_id])
+    @purchase.status = 'declined'
+    @purchase.save
+
+    redirect_to listing_purchase_path(@listing, @purchase)
+
+  end
+
+
   private
 
   def find_listing
@@ -66,6 +88,6 @@ class PurchasesController < ApplicationController
   end
 
   def purchase_params
-    params.require(:purchase).permit(:start_time, :finish_time)
+    params.require(:purchase).permit(:start_time, :finish_time, :status)
   end
 end

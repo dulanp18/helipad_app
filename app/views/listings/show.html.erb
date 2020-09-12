@@ -10,21 +10,43 @@
 
     <div class="text-container">
       <div class="writing">
-        <h3><%= "Title: " =%> <%= @listing.title %></h3>
-        <h3><%= "Description: " =%> <%= @listing.description %></h3>
-        <h3><%= "Address: " =%><%= @listing.address %></h3>
-        <h3><%= "Price: " =%>$<%= @listing.price %> per day</h3>
+        <h3><strong>Title:</strong> <%= @listing.title %></h3>
+        <h3><strong>Description:</strong> <%= @listing.description %></h3>
+        <h3><strong>Address:</strong> <%= @listing.address %></h3>
+        <h3><strong>Price:</strong> $<%= @listing.price %> per day</h3>
         <p>Book this helicopter today. Go anywhere.<br> It comes with a pilot and fuel.<br> <strong>You meet at the address provided</strong></p>
       </div>
       <div class="buttons">
-        <%= link_to 'Book Now', new_listing_purchase_path(@listing), class: "btn btn-primary"%>
         <div class="admin">
-        <%= link_to "Edit", edit_listing_path(@listing), class: "btn btn-info"%>
-        <%= link_to "Delete", listing_path(@listing), method: :delete, data: {:confirm => "Are you sure?"}, class: "btn btn-danger"%>
+          <% if current_user == @listing.user %>
+            <%= link_to "Edit", edit_listing_path(@listing), class: "btn btn-info"%>
+            <%= link_to "Delete", listing_path(@listing), method: :delete, data: {:confirm => "Are you sure?"}, class: "btn btn-danger"%>
+          <% else %>
+            <%= link_to 'Book Now', new_listing_purchase_path(@listing), class: "btn btn-primary"%>
+          <% end %>
         </div>
       </div>
     </div>
+    <div>
+
+      </div>
+    </div>
   </div>
+      <div class="text-container">
+          <% if current_user == @listing.user %>
+          <h1 class="title"> <%= @listing.title %>'s Bookings</h1>
+          <ul>
+            <% if @purchases.length == 0 %>
+              <p>You Have No Bookings Yet</p>
+            <% else %>
+              <% @purchases.each do |purchase| %>
+                <%= link_to listing_purchase_path(purchase.listing,purchase) do %>
+                    <li class="list-group-item"><%= purchase.listing.title %> - Start time: <%= purchase.start_time.strftime('%d-%m-%Y') %> - Finish time: <%= purchase.finish_time.strftime('%d-%m-%Y') %> - $<%= purchase.total_cost %> - Status: <%= purchase.status.titlecase %></li>
+                <% end %>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
 </div>
 
 
