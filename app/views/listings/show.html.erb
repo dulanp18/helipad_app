@@ -17,11 +17,14 @@
         <p>Book this helicopter today. Go anywhere.<br> It comes with a pilot and fuel.<br> <strong>You meet at the address provided</strong></p>
       </div>
       <div class="buttons">
-        <%= link_to 'Book Now', new_listing_purchase_path(@listing), class: "btn btn-primary"%>
+        <% if current_user == @listing.user %>
         <div class="admin">
         <%= link_to "Edit", edit_listing_path(@listing), class: "btn btn-info"%>
         <%= link_to "Delete", listing_path(@listing), method: :delete, data: {:confirm => "Are you sure?"}, class: "btn btn-danger"%>
         </div>
+        <% else %>
+        <%= link_to 'Book Now', new_listing_purchase_path(@listing), class: "btn btn-primary"%>
+        <% end %>
       </div>
     </div>
   </div>
