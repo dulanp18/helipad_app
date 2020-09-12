@@ -8,6 +8,7 @@ class PurchasesController < ApplicationController
   def show
     @listing = Listing.find(params[:listing_id])
     @purchase = Purchase.find(params[:id])
+    @user = current_user
     # @purchase.finish_time = DateTime.strptime(params[:purchase][:finish_time], '%Y-%m-%d')
   end
 
