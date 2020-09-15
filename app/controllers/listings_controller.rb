@@ -8,12 +8,25 @@ class ListingsController < ApplicationController
                 else
                   Listing.all
                 end
+    @markers = @listings.geocoded.map do |listing|
+      {
+        lat: listing.latitude,
+        lng: listing.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { listing: listing })
+      }
+    end
   end
 
   def show
     @listing = Listing.find(params[:id])
     @user = current_user
     @purchases = @listing.purchases
+
+    @markers = [{
+        lat: @listing.geocode[0],
+        lng: @listing.geocode[1],
+        infoWindow: render_to_string(partial: "info_window", locals: { listing: @listing })
+      }]
   end
 
   def new
