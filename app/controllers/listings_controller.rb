@@ -3,17 +3,32 @@ class ListingsController < ApplicationController
 
   def index
     @user = current_user
-    @listings = if params[:search]
-                  Listing.search(params[:search]).order('created_at DESC')
+    @listings = if params[:query].present?
+                  Listing.search_by_title(params[:query])
+                elsif params[:price_range].present?
+                  Listing.where("price <= #{params[:price_range]}")
                 else
                   Listing.all
                 end
+    @markers = @listings.geocoded.map do |listing|
+      {
+        lat: listing.latitude,
+        lng: listing.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { listing: listing })
+      }
+    end
   end
 
   def show
     @listing = Listing.find(params[:id])
     @user = current_user
     @purchases = @listing.purchases
+
+    @markers = [{
+        lat: @listing.geocode[0],
+        lng: @listing.geocode[1],
+        infoWindow: render_to_string(partial: "info_window", locals: { listing: @listing })
+      }]
   end
 
   def new

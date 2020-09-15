@@ -1,5 +1,23 @@
 <div class="container">
+      <div class="search">
+      <%= form_tag(listings_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :query, params[:query], placeholder: "Search by Helicopters", class: 'search-bar' %>
+      <div class="price">
+        <h4>Filter by price  </h4>
+        <%= select_tag :price_range, options_for_select([[], ['Under $200', 200], ['Under $400', 400], ['Under $600', 600], ['Under $800', 800], ['Under $1000', 1000]]), class: "btn btn-secondary dropdown-toggle", label: "Price range" %>
+        <%= submit_tag "Search", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+
+</div>
 <h1 class="title">Choose Your Helicopter</h1>
+
+<div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+
   <div class="grid">
     <% @listings.each do |listing| %>
       <%# if listing.user_id != @user.id %>
