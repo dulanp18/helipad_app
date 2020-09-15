@@ -12,6 +12,7 @@
           <% if listing.photo.attached? %>
             <%= cl_image_tag listing.photo.key, height: 200, width: 400, crop: :fill, class: "card-img-top" %>
           <% end %>
+        </div>
           <div class="card-body">
             <h5 class="card-title"><%= listing.title %></h5>
             <h5>Number of Bookings: <%= listing.purchases.length %></h5>
