@@ -1,10 +1,5 @@
 <div class="container">
-  <ul>
-    <% @listing.reviews.each do |review| %>
-      <li><%= review.content %></li>
-      <%= review.rating %>
-    <% end %>
-  </ul>
+
   <h1 class="title"><%= @listing.title %></h1>
 <%# Details %>
 
@@ -15,6 +10,16 @@
 
     <div class="text-container">
       <div class="writing">
+          <div class="d-flex justify-content-between">
+          <% @listing.reviews.each do |review| %>
+            <div>
+              <%= review.content %>
+            </div>
+            <div>
+              <%= review.rating %>
+            </div>
+          <% end %>
+          </div>
         <h3><strong>Title:</strong> <%= @listing.title %></h3>
         <h3><strong>Description:</strong> <%= @listing.description %></h3>
         <h3><strong>Address:</strong> <%= @listing.address %></h3>
