@@ -5,13 +5,12 @@
     <p>Still not booked a helicopter?</p>
     <%= link_to "Rent Your First Helicopter", listings_path %>
   <% else %>
-  <ul class="list-group">
-    <% @purchases.each do |purchase| %>
-      <%= link_to listing_purchase_path(purchase.listing,purchase) do %>
-          <li class="list-group-item"><strong>Name:</strong> <%= purchase.listing.title %> - <strong>Start time:</strong> <%= purchase.start_time.strftime('%d-%m-%Y') %> - <strong>Finish time:</strong> <%= purchase.finish_time.strftime('%d-%m-%Y') %> - <strong>Price:</strong> $<%= purchase.total_cost %> - <strong>Status:</strong> <%= purchase.status.titlecase %></li>
+    <ul class="list-group">
+      <% @purchases.each do |purchase| %>
+        <%= link_to listing_purchase_path(purchase.listing,purchase) do %>
+            <li class="list-group-item"><%= purchase.listing.title %> - Start time: <%= purchase.start_time.strftime('%d-%m-%Y') %> - Finish time: <%= purchase.finish_time.strftime('%d-%m-%Y') %> - $<%= purchase.total_cost %> - @purchase.status.titlecase</li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
-
+    </ul>
   <% end %>
 </div>
