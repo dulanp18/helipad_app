@@ -2,6 +2,7 @@
   <ul>
     <% @listing.reviews.each do |review| %>
       <li><%= review.content %></li>
+      <%= review.rating %>
     <% end %>
   </ul>
   <h1 class="title"><%= @listing.title %></h1>
