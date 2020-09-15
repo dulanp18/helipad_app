@@ -5,31 +5,29 @@
 
   <div class="show">
     <% if @listing.photo.attached?%>
-      <%= cl_image_tag @listing.photo.key, height: 450, width: 550, crop: :fill =%>
+      <%= cl_image_tag @listing.photo.key, height: 600, width: 550, crop: :fill =%>
     <% end %>
 
     <div id="map"
-     style="width: 100%; height: 600px;"
+     style="width: 550px; height: 600px;"
      data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 
     <div class="text-container">
-      <div class="writing">
-          <div class="d-flex justify-content-between">
-          <% @listing.reviews.each do |review| %>
-            <div>
-              <%= review.content %>
-            </div>
-            <div>
-              <%= review.rating %>
-            </div>
-          <% end %>
-          </div>
-        <h3><strong>Title:</strong> <%= @listing.title %></h3>
-        <h3><strong>Description:</strong> <%= @listing.description %></h3>
-        <h3><strong>Address:</strong> <%= @listing.address %></h3>
-        <h3><strong>Price:</strong> $<%= @listing.price %> per day</h3>
-        <p>Book this helicopter today. Go anywhere.<br> It comes with a pilot and fuel.<br> <strong>You meet at the address provided</strong></p>
+
+      <div class="d-flex justify-content-between">
+        <div class="writing">
+          <h3><strong><%= @listing.title %></strong> </h3>
+          <h3><%= @listing.description %></h3>
+        </div>
+        <div class="writing">
+          <h3><strong>Address:</strong> <%= @listing.address %></h3>
+          <h3><strong>Price:</strong> $<%= @listing.price %> per day</h3>
+          <p>Book this helicopter today. Go anywhere.<br> It comes with a pilot and fuel.<br> <strong>You meet at the address provided</strong></p>
+        </div>
+
       </div>
       <div class="buttons">
         <div class="admin">
@@ -42,26 +40,24 @@
         </div>
       </div>
     </div>
-    <div>
 
-      </div>
-    </div>
-  </div>
-      <div class="text-container">
-          <% if current_user == @listing.user %>
-          <h1 class="title"> <%= @listing.title %>'s Bookings</h1>
-          <ul>
-            <% if @purchases.length == 0 %>
-              <p>You Have No Bookings Yet</p>
-            <% else %>
-              <% @purchases.each do |purchase| %>
-                <%= link_to listing_purchase_path(purchase.listing,purchase) do %>
-                    <li class="list-group-item"><strong>Name:</strong> <%= purchase.listing.title %> - <strong>Start time:</strong> <%= purchase.start_time.strftime('%d-%m-%Y') %> - <strong>Finish time:</strong> <%= purchase.finish_time.strftime('%d-%m-%Y') %> - <strong>Price:</strong> $<%= purchase.total_cost %> - <strong>Status:</strong> <%= purchase.status.titlecase %></li>
-                <% end %>
+
+    <div class="text-container">
+        <% if current_user == @listing.user %>
+        <h1 class="title"> <%= @listing.title %>'s Bookings</h1>
+        <ul>
+          <% if @purchases.length == 0 %>
+            <p>You Have No Bookings Yet</p>
+          <% else %>
+            <% @purchases.each do |purchase| %>
+              <%= link_to listing_purchase_path(purchase.listing,purchase) do %>
+                  <li class="list-group-item"><strong>Name:</strong> <%= purchase.listing.title %> - <strong>Start time:</strong> <%= purchase.start_time.strftime('%d-%m-%Y') %> - <strong>Finish time:</strong> <%= purchase.finish_time.strftime('%d-%m-%Y') %> - <strong>Price:</strong> $<%= purchase.total_cost %> - <strong>Status:</strong> <%= purchase.status.titlecase %></li>
               <% end %>
             <% end %>
-          </ul>
-        <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+  </div>
 </div>
 
 
