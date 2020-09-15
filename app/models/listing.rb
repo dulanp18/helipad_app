@@ -1,6 +1,7 @@
 class Listing < ApplicationRecord
   belongs_to :user
   has_many :purchases
+  has_many :reviews, through: :purchases
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
