@@ -6,11 +6,19 @@ class Listing < ApplicationRecord
 
   has_one_attached :photo
 
-  def self.search(search)
-    where("title LIKE ?", "%#{search.capitalize}%")
-  end
+  include PgSearch::Model
 
-  def title=(s)
-    super s.titlecase
-  end
+  pg_search_scope :search_by_title,
+    against: [:title],
+    using: {
+      tsearch: { prefix: true }
+    }
+
+  # def self.search(search)
+  #   where("title LIKE ?", "%#{search.capitalize}%")
+  # end
+
+  # def title=(s)
+  #   super s.titlecase
+  # end
 end

@@ -21,5 +21,23 @@
 }
 
 .search {
-  width: 20%;
+  // height: 20px;
+align-items: center;
+  width: 100%;
+}
+
+#search-form {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+}
+
+.price {
+  display: flex;
+  padding: 0 16px;
+
+
+    h4 {
+      padding: 0 16px;
+    }
 }

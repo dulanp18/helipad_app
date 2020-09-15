@@ -3,8 +3,10 @@ class ListingsController < ApplicationController
 
   def index
     @user = current_user
-    @listings = if params[:search]
-                  Listing.search(params[:search]).order('created_at DESC')
+    @listings = if params[:query].present?
+                  Listing.search_by_title(params[:query])
+                elsif params[:price_range].present?
+                  Listing.where("price <= #{params[:price_range]}")
                 else
                   Listing.all
                 end
