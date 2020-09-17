@@ -1,42 +1,38 @@
 <div class="container">
-      <div class="search">
-      <%= form_tag(listings_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :query, params[:query], placeholder: "Search by Helicopters", class: 'search-bar' %>
-      <div class="price">
-        <%= select_tag :price_range, options_for_select([['Under $200', 200], ['Under $400', 400], ['Under $600', 600], ['Under $800', 800], ['Under $1000', 1000]]), class: "btn btn-secondary dropdown-toggle", label: "Price range",:include_blank => "Filter By Price" %>
-        <%= submit_tag "Search", class: 'btn btn-primary' %>
-      </div>
+  <div class="search">
+    <%= form_tag(listings_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :query, params[:query], placeholder: "Search by Helicopters", class: 'search-bar' %>
+    <div class="price">
+      <%= select_tag :price_range, options_for_select([['Under $200', 200], ['Under $400', 400], ['Under $600', 600], ['Under $800', 800], ['Under $1000', 1000]]), class: "btn btn-secondary dropdown-toggle", label: "Price range",:include_blank => "Filter By Price" %>
+      <%= submit_tag "Search", class: 'btn btn-primary' %>
+    </div>
     <% end %>
 
-</div>
-<h1 class="title">Choose Your Helicopter</h1>
+  </div>
+  <h1 class="title">Choose Your Helicopter</h1>
 
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  <div id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
 
   <div class="grid">
     <% @listings.each do |listing| %>
-      <%# if listing.user_id != @user.id %>
-        <%= link_to listing_path(listing) do%>
-          <div class="card" style="width: 18rem;">
-            <% if listing.photo.attached? %>
-              <%= cl_image_tag listing.photo.key, height: 200, width: 400, crop: :fill, class: "card-img-top" %>
-            <% end %>
-            <div class="card-body">
-              <h5 class="card-title"><%= listing.title %></h5>
-              <div class="card-text">
-                <p> <%= listing.description %></p>
-                <p> $<%= listing.price %></p>
-              </div>
-            </div>
-        <% end %>
-          </div>
+    <%# if listing.user_id != @user.id %>
+    <%= link_to listing_path(listing) do%>
+    <div class="card" style="width: 18rem;">
+      <% if listing.photo.attached? %>
+      <%= cl_image_tag listing.photo.key, height: 200, width: 400, crop: :fill, class: "card-img-top" %>
       <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= listing.title %></h5>
+        <div class="card-text">
+          <p> <%= listing.description %></p>
+          <p> $<%= listing.price %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
     <%# end %>
   </div>
 
 </div>
-

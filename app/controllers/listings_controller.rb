@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @user = current_user
@@ -25,10 +25,10 @@ class ListingsController < ApplicationController
     @purchases = @listing.purchases
 
     @markers = [{
-        lat: @listing.geocode[0],
-        lng: @listing.geocode[1],
-        infoWindow: render_to_string(partial: "info_window", locals: { listing: @listing })
-      }]
+      lat: @listing.geocode[0],
+      lng: @listing.geocode[1],
+      infoWindow: render_to_string(partial: "info_window", locals: { listing: @listing })
+    }]
   end
 
   def new
