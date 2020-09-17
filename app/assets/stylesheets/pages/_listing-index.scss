@@ -1,0 +1,35 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  margin: 1rem;
+  grid-gap: .5rem;
+  position: relative;
+}
+
+#map {
+  margin-top: 1rem;
+  position: sticky;
+  top: 0;
+}
+
+.search {
+  padding: 20px 0;
+  align-items: center;
+  width: 100%;
+}
+
+#search-form {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+}
+
+.price {
+  display: flex;
+  padding: 0 16px;
+
+
+    h4 {
+      padding: 0 16px;
+    }
+}

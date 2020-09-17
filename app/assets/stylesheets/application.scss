@@ -16,16 +16,11 @@
 
 
 
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 2rem;
-  grid-gap: 2rem;
-}
+
 
 .body {
   margin: 0;
+  font-family: $headers-font;
 }
 
 
@@ -33,4 +28,8 @@ a {
     &:hover {
       text-decoration: none;
     }
+}
+
+.div {
+  margin: 0;
 }
