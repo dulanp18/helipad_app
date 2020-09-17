@@ -22,9 +22,9 @@ const initMapbox = () => {
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup)
       .addTo(map);
+  fitMapToMarkers(map, markers);
   });
   };
-  fitMapToMarkers(map, markers);
 };
 
 export { initMapbox }
