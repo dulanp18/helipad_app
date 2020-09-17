@@ -7,13 +7,8 @@
       <%= submit_tag "Search", class: 'btn btn-primary' %>
     </div>
     <% end %>
-
   </div>
   <h1 class="title">Choose Your Helicopter</h1>
-
-
-  <div id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
 
 
   <div class="d-flex">
@@ -29,7 +24,7 @@
                 <h5 class="card-title"><%= listing.title %></h5>
                 <div class="card-text">
                   <p> <%= listing.description %></p>
-                  <p> $<%= listing.price %></p>
+                  <p id="price"> $<%= listing.price %></p>
                 </div>
               </div>
           <% end %>
@@ -41,9 +36,7 @@
        style="width: 100%; height: 600px;"
        data-markers="<%= @markers.to_json %>"
        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-
-       </div>
-
+      </div>
   </div>
 
 </div>

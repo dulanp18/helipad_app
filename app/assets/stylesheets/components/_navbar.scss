@@ -1,10 +1,14 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: #9fdcf2;
+
 
   h1 {
     font-weight: bold;
-      color: #1b56b7;
+    font-size: 42px;
+    background: -webkit-linear-gradient(rgb(101, 215, 230), rgb(48, 51, 192));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
 
@@ -18,26 +22,4 @@
 
 .navbar-brand {
   display: flex;
-}
-
-.search {
-  // height: 20px;
-align-items: center;
-  width: 100%;
-}
-
-#search-form {
-  display: flex;
-  justify-content: space-between;
-  height: 40px;
-}
-
-.price {
-  display: flex;
-  padding: 0 16px;
-
-
-    h4 {
-      padding: 0 16px;
-    }
 }
