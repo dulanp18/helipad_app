@@ -34,12 +34,12 @@
 
       </div>
       <div class="buttons">
-        <div class="admin">
+        <div class="yellow-button">
           <% if current_user == @listing.user %>
             <%= link_to "Edit", edit_listing_path(@listing), class: "btn btn-info"%>
-            <%= link_to "Delete", listing_path(@listing), method: :delete, data: {:confirm => "Are you sure?"}, class: "btn btn-danger"%>
+            <%= link_to "Delete", listing_path(@listing), method: :delete, data: {:confirm => "Are you sure?"}, class: "btn btn-info"%>
           <% else %>
-            <%= link_to 'Book Now', new_listing_purchase_path(@listing), class: "btn btn-primary"%>
+            <%= link_to 'Book Now', new_listing_purchase_path(@listing)%>
           <% end %>
         </div>
       </div>
@@ -48,21 +48,24 @@
     <div class="text-container">
       <div class="writing">
         <h1 class=title>Reviews</h1>
-          <% if @reviews %>
+          <% if @reviews.length > 0 %>
             <% @reviews.each do |review| %>
               <h3>Description: <%= review.content %></h3>
               <h3>Rating: <%= review.rating %></h3>
             <% end %>
-          <% end %>
+            <% else %>
+              <p class="text-center"> No one has reviewed the helicopter yet.</p>
+            <% end %>
       </div>
     </div>
 
-    <div class="text-container">
-        <% if current_user == @listing.user %>
+
+      <% if current_user == @listing.user %>
+      <div class="text-container">
         <h1 class="title"> <%= @listing.title %>'s Bookings</h1>
         <ul>
           <% if @purchases.length == 0 %>
-            <p>You Have No Bookings Yet</p>
+            <p class="text-center">You Have No Bookings Yet</p>
           <% else %>
             <% @purchases.each do |purchase| %>
               <%= link_to listing_purchase_path(purchase.listing,purchase) do %>
@@ -71,8 +74,8 @@
             <% end %>
           <% end %>
         </ul>
-      <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
 
 
