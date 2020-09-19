@@ -46,15 +46,15 @@
     </div>
 
     <div class="text-container">
-      <h3>Reviews</h3>
-        <% if @reviews %>
-          <% @reviews.each do |review| %>
-            <%= review.content %>
-            <%= review.rating %>
+      <div class="writing">
+        <h1 class=title>Reviews</h1>
+          <% if @reviews %>
+            <% @reviews.each do |review| %>
+              <h3>Description: <%= review.content %></h3>
+              <h3>Rating: <%= review.rating %></h3>
+            <% end %>
           <% end %>
-  <% end %>
-
-
+      </div>
     </div>
 
     <div class="text-container">
