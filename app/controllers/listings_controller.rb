@@ -67,6 +67,13 @@ class ListingsController < ApplicationController
   def my_listings
     @user = current_user
     @listings = Listing.where(user_id: @user.id)
+        @markers = @listings.geocoded.map do |listing|
+      {
+        lat: listing.latitude,
+        lng: listing.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { listing: listing })
+      }
+    end
   end
 
   private
