@@ -5,7 +5,7 @@
 
   <div class="show">
     <% if @listing.photo.attached?%>
-      <%= cl_image_tag @listing.photo.key, height: 600, width: 550, crop: :fill =%>
+      <%= cl_image_tag @listing.photo.key, height: 600, width: 550, crop: :fill, class: "image" %>
     <% end %>
 
     <div id="map" class='map'
