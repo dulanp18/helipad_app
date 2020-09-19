@@ -19,16 +19,13 @@
 
       <div class="d-flex justify-content-between">
         <div class="writing">
-          <h3 id="listing-title"><strong><%= @listing.title %></strong> </h3>
           <h3 id="listing-description"><%= @listing.description %></h3>
+          <p>All helicopters comes with a pilot and fuel.<br> <strong>You must meet at the address provided</strong></p>
         </div>
         <div class="writing" id="right-side">
           <div>
             <h3 id="listing-address"> <%= @listing.address %></h3>
             <h3 id="listing-price">$<%= @listing.price %> per day</h3>
-          </div>
-          <div>
-            <p>Book this helicopter today. Go anywhere.<br> It comes with a pilot and fuel.<br> <strong>You meet at the address provided</strong></p>
           </div>
         </div>
 
@@ -36,10 +33,10 @@
       <div class="buttons">
         <div class="yellow-button">
           <% if current_user == @listing.user %>
-            <%= link_to "Edit", edit_listing_path(@listing), class: "btn btn-info"%>
-            <%= link_to "Delete", listing_path(@listing), method: :delete, data: {:confirm => "Are you sure?"}, class: "btn btn-info"%>
+            <%= link_to "Edit", edit_listing_path(@listing), class: "btn"%>
+            <%= link_to "Delete", listing_path(@listing), method: :delete, data: {:confirm => "Are you sure?"}, class: "btn"%>
           <% else %>
-            <%= link_to 'Book Now', new_listing_purchase_path(@listing)%>
+            <%= link_to 'Book Now', new_listing_purchase_path(@listing), class: "btn"%>
           <% end %>
         </div>
       </div>
