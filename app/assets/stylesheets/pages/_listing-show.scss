@@ -1,15 +1,29 @@
 .show {
   display: flex;
   justify-content: space-between;
+
+    img {
+      margin-top: 1rem;
+    }
 }
 
 .writing {
   padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   h3 {
     margin-bottom: .6em;
     color: #565656;
   }
+}
+
+#right-side {
+    display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
 }
 
 .title {
@@ -25,10 +39,27 @@
   justify-content: space-between;
   background: #fff;
   padding: 1em;
+  margin-top: 1rem;
 }
 
 .buttons {
   display: flex;
   justify-content: space-between;
   margin: 1em;
+}
+
+#listing-title {
+  color: #2A73FB;
+}
+
+#listing-price {
+  strong {
+    color: #2A73FB;
+  }
+}
+
+#listing-address {
+    strong {
+    color: #2A73FB;
+  }
 }

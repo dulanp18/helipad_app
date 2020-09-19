@@ -1,2 +1,4 @@
-<h2><%= listing.title %></h2>
-<p>$<%= listing.price %> per day</p>
+<%= link_to listing_path(listing) do%>
+<h3><%= listing.title %></h3>
+<p id="price">$<%= listing.price %> per day</p>
+<% end %>
