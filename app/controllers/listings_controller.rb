@@ -23,6 +23,12 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @user = current_user
     @purchases = @listing.purchases
+    @reviews = []
+    @purchases.each do |purchase|
+      if purchase.review
+        @reviews << purchase.review
+      end
+    end
 
     @markers = [{
       lat: @listing.geocode[0],
