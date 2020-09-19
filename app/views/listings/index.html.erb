@@ -14,7 +14,6 @@
   <div class="d-flex">
     <div class="grid">
       <% @listings.each do |listing| %>
-        <%# if listing.user_id != @user.id %>
           <%= link_to listing_path(listing) do%>
             <div class="card" style="width: 18rem;">
               <% if listing.photo.attached? %>
@@ -27,11 +26,11 @@
                   <p id="price"> $<%= listing.price %></p>
                 </div>
               </div>
-          <% end %>
             </div>
+          <% end %>
         <% end %>
-      <%# end %>
     </div>
+
       <div id="map"
        style="width: 100%; height: 600px;"
        data-markers="<%= @markers.to_json %>"
