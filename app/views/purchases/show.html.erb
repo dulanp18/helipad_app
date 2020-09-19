@@ -32,9 +32,16 @@
     <%= link_to "Leave a review", new_listing_purchase_review_path(@listing, @purchase), class: "btn btn-info" %>
   <% end %>
   <% if @user == @purchase.user && @purchase.review %>
-      <%= @purchase.review.content %>
-      <%= @purchase.review.rating %>
-    <%= link_to "Delete", review_path(@purchase.review), method: :delete, data: {:confirm => "Are you sure?"}, class: "btn btn-danger"%>
-  <% end %>
+
+    <div class="text-container">
+      <div class="writing">
+        <h1 class=title>Reviews</h1>
+        <h3>Description:  <%= @purchase.review.content %></h3>
+         <h3>Rating: <%= @purchase.review.rating %></h3>
+      </div>
+    </div>
+      <%= link_to "Delete", review_path(@purchase.review), method: :delete, data: {:confirm => "Are you sure?"}, class: "btn btn-danger"%>
   </div>
+  <% end %>
+
 </div>
