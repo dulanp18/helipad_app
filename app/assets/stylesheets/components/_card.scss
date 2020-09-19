@@ -12,7 +12,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  color: gray;
+  color: $yellow;
 }
 
 .card-body {
@@ -21,10 +21,11 @@
   justify-content: space-between;
   height: 150px;
   position: relative;
+  background-color: #14213d;
 }
 
 #price {
-  color: #1b56b7;
+  color: $yellow;
   font-weight: bold;
   font-size: 20px;
 }
