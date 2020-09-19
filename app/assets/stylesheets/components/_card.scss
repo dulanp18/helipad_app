@@ -1,6 +1,7 @@
 .card {
   box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
   height: 350px;
+  border-radius: 8px;
 }
 
 .card-text {
@@ -22,6 +23,7 @@
   height: 150px;
   position: relative;
   background-color: #14213d;
+  border-radius: 0px 0px 8px 8px;
 }
 
 #price {
@@ -32,4 +34,9 @@
 
 .card-title {
   color: $yellow;
+}
+
+
+.card-img-top {
+  border-radius: 8px 8px 0px 0px;
 }
