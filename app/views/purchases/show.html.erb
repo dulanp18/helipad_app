@@ -17,7 +17,7 @@
     </div>
   <% if @user == @purchase.user %>
     <%= link_to "Edit Booking", edit_listing_purchase_path(@listing, @purchase), class: "btn btn-info" %>
-    <%= link_to "Leave a review" %>
+
   <% else %>
     <% if @purchase.status == 'declined'  %>
       <%= link_to "Accept Booking", listing_purchase_accept_path(@listing,@purchase), :method => :patch, class: "btn btn-success" %>
@@ -28,6 +28,13 @@
       <%= link_to "Decline Booking", listing_purchase_decline_path(@listing,@purchase) , :method => :patch,  class: "btn btn-danger" %>
     <% end %>
   <% end %>
-
+  <% if @user == @purchase.user && !@purchase.review  %>
+    <%= link_to "Leave a review", new_listing_purchase_review_path(@listing, @purchase), class: "btn btn-info" %>
+  <% end %>
+  <% if @user == @purchase.user && @purchase.review %>
+      <%= @purchase.review.content %>
+      <%= @purchase.review.rating %>
+    <%= link_to "Delete", review_path(@purchase.review), method: :delete, data: {:confirm => "Are you sure?"}, class: "btn btn-danger"%>
+  <% end %>
   </div>
 </div>
