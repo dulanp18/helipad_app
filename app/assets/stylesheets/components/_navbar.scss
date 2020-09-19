@@ -1,25 +1,46 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: #9fdcf2;
+  background: #e5e5e5;
+  position: sticky;
+  top:0;
 
 
   h1 {
+    font-family: $logo-font;
     font-weight: bold;
-    font-size: 42px;
-    background: -webkit-linear-gradient(rgb(101, 215, 230), rgb(48, 51, 192));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 30px;
+    color: $yellow;
+    padding-top:10px;
+    padding-bottom: 10px;
+    padding-right:20px;
+  }
+
+  img{
+    color: $light-grey
   }
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+  position: sticky;
+  top:0;
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 70px;
+  position: sticky;
+  top:0;
 }
 
 .navbar-brand {
   display: flex;
+}
+
+.navbar-button {
+  background-color: $yellow;
+  padding: 10px;
+  border-radius: 5%;
+  position: sticky;
+  top:0;
+
 }
